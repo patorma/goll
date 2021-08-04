@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Urls{% endblock %}
+
+{% block body %}
+    <h1>Urls</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ url.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ url.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ url.estado ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Comentario</th>
+                <td>{{ url.comentario }}</td>
+            </tr>
+            <tr>
+                <th>Creation_date</th>
+                <td>{{ url.creationDate ? url.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('urls_index') }}">back to list</a>
+
+    <a href="{{ path('urls_edit', {'id': url.id}) }}">edit</a>
+
+    {{ include('urls/_delete_form.html.twig') }}
+{% endblock %}
